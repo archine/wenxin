@@ -7,6 +7,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 
 /**
  * @author colin
@@ -29,5 +30,8 @@ public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("websocketProtocol",new WebSocketServerProtocolHandler("/ws"));
         //自定义handler
         pipeline.addLast("customerHandler", new SocketServerHandler());
+        pipeline.addLast("idleStateHandler", new IdleStateHandler(2, 4, 6));
+        //自定义空闲状态监测
+        pipeline.addLast("heartBeatHandler", new HeartBeatHandler());
     }
 }

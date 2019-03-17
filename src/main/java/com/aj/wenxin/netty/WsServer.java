@@ -38,8 +38,7 @@ public class WsServer {
         workGroup = new NioEventLoopGroup();
         bootstrap = new ServerBootstrap();
         bootstrap.group(bossGroup, workGroup)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new SocketServerInitializer());
+                .channel(NioServerSocketChannel.class).childHandler(new SocketServerInitializer());
     }
 
     public void start() {

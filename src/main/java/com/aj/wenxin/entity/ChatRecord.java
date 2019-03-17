@@ -1,6 +1,6 @@
 package com.aj.wenxin.entity;
 
-import lombok.Builder;
+import com.baomidou.mybatisplus.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +16,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "chat_record")
-@Builder
-public class ChatRecord extends BaseModel{
+public class ChatRecord extends BaseModel<Model<ChatRecord>>{
     @Column(name = "send_user_id", columnDefinition = "bigint not null comment '发送者id'")
     private Long sendUserId;
     @Column(name = "accept_user_id", columnDefinition = "bigint not null comment '接收者id'")
@@ -26,4 +25,5 @@ public class ChatRecord extends BaseModel{
     private String charContent;
     @Column(name = "sign_flag", columnDefinition = "tinyint(1) default 1 comment '是否已读:1未读,2已读'")
     private Integer signFlag;
+
 }

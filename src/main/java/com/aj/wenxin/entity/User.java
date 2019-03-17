@@ -1,6 +1,5 @@
 package com.aj.wenxin.entity;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,11 +13,9 @@ import javax.persistence.Table;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
 @Entity
 @Table(name = "user")
 public class User extends BaseModel {
-    private static final long serialVersionUID = 2301714428213130022L;
     @Column(name = "user_name", columnDefinition = "varchar(20) not null comment '用户名'")
     private String userName;
     @Column(name = "password", columnDefinition = "varchar(100) not null comment '密码'")

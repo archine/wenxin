@@ -8,4 +8,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @date 2019-03-11
  **/
 public interface UserDao extends BaseMapper<User> {
+    User findByName(String userName);
 }

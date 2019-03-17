@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.enums.FieldFill;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
+@Builder
 public class BaseModel<T extends Model<?>> extends Model<T> {
     private static final long serialVersionUID = -8100641093890955913L;
     @Id
@@ -40,5 +42,8 @@ public class BaseModel<T extends Model<?>> extends Model<T> {
     @Override
     protected Serializable pkVal() {
         return this.id;
+    }
+
+    public BaseModel() {
     }
 }
